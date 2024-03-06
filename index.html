@@ -1,128 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="shortcut icon"
+      href="assets/img/favicon.ico"
+      type="image/x-icon"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--Bootstrap CDN-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-  <!-- jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-</head>
+  <body>
+    <!-- Barra de navegación -->
+    <nav>
+      <ul>
+        <li>
+          <a href="#">
+            <img src="assets/img/sh2.jpg" alt="" width="50px" />
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Contenido -->
+    <header>
+      <div>
+        <img src="assets/img/sh1.jpg" alt="" width="" />
+      </div>
+      <div>
+        <h1>Encuentra tu SuperHero</h1>
+        <form action="">
+          <p>
+            <label for="superhero"
+              >Ingresa el número del SuperHero a buscar</label
+            ><br />
+            <input
+              type="text"
+              name="superhero"
+              id="superhero"
+              placeholder="Busca un heroe 🦸"
+            />
+          </p>
+          <p>
+            <input type="submit" value="Buscar" />
+          </p>
+        </form>
+      </div>
+      <section>
+        <div>
+          <!--Usar diferentes selectores para llamar diferentes elementos al HTMl-->
+          <h2><strong id="name"></strong></h2>
+          <p><strong>Biography</strong>: <span id="biography"></span></p>
+          <p>PowerStats: <span id="powerstats"></span></p>
+          <p>Appearance: <span id="appearance"></span></p>
+          <p>Work: <span id="work"></span></p>
+          <p>Connections: <span id="connections"></span></p>
+          <img class="image" src="" alt="image" width="250px" />
+        </div>
+      </section>
 
-<body>
-  <!-- Barra de navegación -->
-  <nav>
-    <ul>
-      <li>
-        <a href="#">
-          <img src="assets/img/sh2.jpg" alt="" width="50px" />
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- Contenido -->
-  <header>
-    <div>
-      <img src="assets/img/sh1.jpg" alt="" width="" />
-    </div>
-    <div>
-      <h1>Encuentra tu SuperHero</h1>
-      <form action="">
-        <p>
-          <label for="superhero">Ingresa el número del SuperHero a buscar</label><br />
-          <input type="text" name="superhero" id="superhero" placeholder="Busca un heroe 🦸" />
-        </p>
-        <p>
-          <input type="submit" value="Buscar" />
-        </p>
-      </form>
-    </div>
-<section>
-  <div>
-  <!--Usar diferentes selectores para llamar diferentes elementos al HTMl-->
-  <p><strong>Biography</strong>: <span id="biography"></span></p> 
-  <p>PowerStats: <span id="powerstats"></span></p>
-  <p>Appearance: <span id="appearance"></span></p>
-  <p>Work: <span id="work"></span></p>
-  <p>Connections: <span id="connections"></span></p>
-  <p>Image: <span id="image"></span></p>
+      <section class="container-fluid">
+        <div class="card-group">
+          <div class="card">
+            <img src="" class="image card-img-top" alt="image" width="300px" />
+            <div class="card-body">
+              <h5 class="card-title" id="name"></h5>
+              <p class="card-text">
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
+              <p class="card-text">
+                <small class="text-body-secondary"></small>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This card has supporting text below as a natural lead-in to
+                additional content.
+              </p>
+              <p class="card-text">
+                <small class="text-body-secondary"></small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </header>
 
-  </div>
-
-  
-
-
-</section>
-
-
-
-  </header>
-
-
-  <!-- Cambiaré el script a script.js ya que me confunde visualmente el codigo de js en el de html
+    <!-- Cambiaré el script a script.js ya que me confunde visualmente el codigo de js en el de html
   y seguiré avanzando despúes de clases hasta que logré mostrar la info-->
-  <script>
-    $(document).ready(function () {
-      $("form").submit(function (event) {
-        event.preventDefault();
-        const searchTerm = $("#superhero").val().trim();
-        if (!searchTerm.match(/^\d+$/)) {
-          alert("Por favor, ingresa solo números.");
-          return;
-        }
-
-        const apiKey = "4905856019427443";
-        const apiUrl = `https://superheroapi.com/api.php/${apiKey}/${searchTerm}`;
-
-        // Hacer la petición a la API
-        $.ajax({
-          type: "GET",
-          url: apiUrl,
-          dataType: "json",
-          success: function (superheroResponse) {
-            console.log(superheroResponse);
-            const superheroPowerStats = superheroResponse.powerstats;
-            const superheroBiography = superheroResponse.biography;
-            const superheroAppearance = superheroResponse.appearance;
-            const superheroWork = superheroResponse.work;
-            const superheroConnections = superheroResponse.connections;
-            const superheroImage = superheroResponse.image;
-
-            //estoy mostrando al usuario [object Object] 
-            //pero me es un avance igualmente ya que no lograba que se mostrará nada anteriorimente
-            //no logré en esta parte avanzar más teniendo en cuenta que no e llegado a esas partes viendo las clases completas llevo solo casi 3días.
-            //Seguiré avanzando antes y despues de clases con las clases y desafios no guiados atrasadas y en hacer funcionar la API.
-              
-            $('#powerstats').text(superheroPowerStats);
-            $('#biography').text(superheroBiography);
-            $('#appearance').text(superheroAppearance)
-            $('#work').text(superheroWork)
-            $('#connections').text(superheroConnections)
-            $('#image').text(superheroImage)
-
-          },
-
-
-
-          // Si hay un error en la petición
-          error: function (error) {
-            console.log(error);
+    <script>
+      $(document).ready(function () {
+        $("form").submit(function (event) {
+          event.preventDefault();
+          const searchTerm = $("#superhero").val().trim();
+          if (!searchTerm.match(/^\d+$/)) {
+            alert("Por favor, ingresa solo números.");
+            return;
           }
 
+          const apiKey = "4905856019427443";
+          const apiUrl = `https://superheroapi.com/api.php/${apiKey}/${searchTerm}`;
+
+          // Hacer la petición a la API
+          $.ajax({
+            type: "GET",
+            url: apiUrl,
+            dataType: "json",
+            success: function (superheroResponse) {
+              console.log(superheroResponse);
+              // Se decodifica JSON con "JSON.stringify"
+              const superheroPowerStats = JSON.stringify(
+                superheroResponse.powerstats
+              );
+              const superheroBiography = JSON.stringify(
+                superheroResponse.biography
+              );
+              const superheroName = superheroResponse.name;
+              const superheroAppearance = JSON.stringify(
+                superheroResponse.appearance
+              );
+              const superheroWork = JSON.stringify(superheroResponse.work);
+              const superheroConnections = JSON.stringify(
+                superheroResponse.connections
+              );
+              const superheroImage = superheroResponse.image.url; //se va agregando "." para ir avanzando en que propiedad en especifico se quiera mostrar.
+
+              //estoy mostrando al usuario [object Object], se solucionó con el uso de "JSON.stringify()" aprendido leyendo docs.
+              //pero me es un avance igualmente ya que no lograba que se mostrará nada anteriorimente
+              //no logré en esta parte avanzar más teniendo en cuenta que no e llegado a esas partes viendo las clases completas llevo solo casi 3días.
+              //Seguiré avanzando antes y despues de clases con las clases y desafios no guiados atrasadas y en hacer funcionar la API.//se logró mostrar info...
+
+              $("#powerstats").text(superheroPowerStats);
+              $("#biography").text(superheroBiography);
+              $("#name").text(superheroName);
+              $("#appearance").text(superheroAppearance);
+              $("#work").text(superheroWork);
+              $("#connections").text(superheroConnections);
+              $(".image").attr("src", superheroImage); //Por Class al incluir "." en vez de # = id
+              $("#image-card").attr("src", superheroImage);
+            },
+
+            // Si hay un error en la petición
+            error: function (error) {
+              console.log(error);
+            },
+          });
         });
       });
 
-
-
-    });
-
-    // document.write("Este es un ejemplo de document.write().");
-    
-
-
-  </script>
-</body>
-
+      // document.write("Este es un ejemplo de document.write().");
+    </script>
+  </body>
 </html>
